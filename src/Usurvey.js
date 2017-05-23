@@ -36,13 +36,15 @@ class Usurvey extends Component {
 		this.setState({answers: answers}, function(){
 			console.log(this.state);
 		})
-		
-	
+			
 	}
 
 		questionSubmit(){
-			//TODO:  This one too!
-
+			firebase.database().ref('Survey/'+this.state.uid).set({
+				studentName: this.state.studentName,
+				answers: this.state.answers
+			});
+			this.setState({isSubmitted: true});		
 		}
 
 	constructor(props){
@@ -50,7 +52,7 @@ class Usurvey extends Component {
 
 		this.state = {
 			uid: uuid.v1(),
-			studentName: 'Joe',
+			studentName: '',
 			answers: {
 				answer1: '',
 				answer2: '',
