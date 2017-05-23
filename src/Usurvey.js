@@ -103,7 +103,7 @@ class Usurvey extends Component {
 								<input className="feedback-button" type="submit" value="submit" />
 						</form>
 					</div>
-		}  else if(this.state.isSubmitted === true ){
+		}  else if(this.state.isSubmitted === true && this.studentName != ''){
 				studentName = <h1>Thank you, {this.state.studentName}</h1>
 		}
 
