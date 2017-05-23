@@ -21,8 +21,27 @@ class Usurvey extends Component {
 			});
 		}
 
-		answerSelected(){
-			
+		answerSelected(event){
+		var answers = this.state.answers;
+		if(event.target.name === 'answer1'){
+			answers.answer1 = event.target.value;
+		}
+		 else if(event.target.name === 'answer2'){
+			answers.answer2 = event.target.value;
+		}
+		 else if(event.target.name === 'answer3'){
+			answers.answer3 = event.target.value;
+		}
+	
+		this.setState({answers: answers}, function(){
+			console.log(this.state);
+		})
+		
+	
+	}
+
+		questionSubmit(){
+			//TODO:  This one too!
 
 		}
 
@@ -42,6 +61,7 @@ class Usurvey extends Component {
 		};
 		this.nameSubmit = this.nameSubmit.bind(this);
 		this.answerSelected = this.answerSelected.bind(this);
+		this.questionSubmit = this.questionSubmit.bind(this);
 	}
 
 	render(){
@@ -53,35 +73,38 @@ class Usurvey extends Component {
 				studentName = <div>
 				<h1> Hey Student, Please let us know your name: </h1>
 						<form onSubmit={this.nameSubmit}>
-							<input className="nany" type="text" placeholder="Enter your name" ref="name" />
+							<input className="enterName" type="text" placeholder="Enter your name" ref="name" />
 						</form>
 				</div>
 		} else if (this.state.studentName !== '' && this.state.isSubmitted === false){
 				studentName = <h1>Welcome to the Sample Survey, {this.state.studentName}</h1>
-					questions = <div>
+					questions = 
+					<div>
 						<h2>Here are some questions:</h2>
-						<form>
+						<form onSubmit={this.questionSubmit}>
 							<div className="card">
-								<label>What is your favorite programming language:  </label>
+								<label>What is your favorite programming language:  </label><br />
 								<input type="radio" name="answer1" value="Javascript" onChange={this.answerSelected}/> Javascript
 								<input type="radio" name="answer1" value="Ruby" onChange={this.answerSelected}/> Ruby
 								<input type="radio" name="answer1" value="Python" onChange={this.answerSelected}/> Python
 							</div>
 							<div className="card">
-								<label>Which working environment do you prefer:  </label>
+								<label>Which working environment do you prefer:  </label><br />
 								<input type="radio" name="answer2" value="Startup" onChange={this.answerSelected}/> Startup
 								<input type="radio" name="answer2" value="Agency" onChange={this.answerSelected}/> Agency
-								<input type="radio" name="answer2" value="Large Technology Company" onChange={this.answerSelected}/> Intl Tech Company
+								<input type="radio" name="answer2" value="Large Technology Company" onChange={this.answerSelected}/> Large Tech Company
 							</div>
 							<div className="card">
-								<label>What was your main learning to code resource:</label>
+								<label>What was your main learning to code resource:</label><br />
 								<input type="radio" name="answer3" value="Self-Taught / Online" onChange={this.answerSelected}/> Self-Taught / Online
 								<input type="radio" name="answer3" value="Formal School" onChange={this.answerSelected}/> Formal School
 								<input type="radio" name="answer3" value="Free and Pay Education Websites" onChange={this.answerSelected}/>Free and Pay Education Websites
-								</div>
-
-						  </form>
+							</div>
+								<input className="feedback-button" type="submit" value="submit" />
+						</form>
 					</div>
+		}  else if(this.state.isSubmitted === true ){
+				studentName = <h1>Thank you, {this.state.studentName}</h1>
 		}
 
 		return(
