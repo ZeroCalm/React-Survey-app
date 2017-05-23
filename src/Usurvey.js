@@ -68,12 +68,17 @@ class Usurvey extends Component {
 								<input type="radio" name="answer1" value="Python" onChange={this.answerSelected}/> Python
 							</div>
 							<div className="card">
-								<label>Which environment do you prefer:  </label>
-								<input type="radio" name="answer2" value="Freelance" onChange={this.answerSelected}/> Freelance
+								<label>Which working environment do you prefer:  </label>
 								<input type="radio" name="answer2" value="Startup" onChange={this.answerSelected}/> Startup
 								<input type="radio" name="answer2" value="Agency" onChange={this.answerSelected}/> Agency
-								<input type="radio" name="answer2" value="Large Technology Company" onChange={this.answerSelected}/> Large Technology Company
+								<input type="radio" name="answer2" value="Large Technology Company" onChange={this.answerSelected}/> Intl Tech Company
 							</div>
+							<div className="card">
+								<label>What was your main learning to code resource:</label>
+								<input type="radio" name="answer3" value="Self-Taught / Online" onChange={this.answerSelected}/> Self-Taught / Online
+								<input type="radio" name="answer3" value="Formal School" onChange={this.answerSelected}/> Formal School
+								<input type="radio" name="answer3" value="Free and Pay Education Websites" onChange={this.answerSelected}/>Free and Pay Education Websites
+								</div>
 
 						  </form>
 					</div>
